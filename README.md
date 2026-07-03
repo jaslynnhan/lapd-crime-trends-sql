@@ -1,17 +1,11 @@
-# lapd-crime-trends-sql
-SQL Analysis of LAPD crime data (2020 - 2023) identifying area-level trends and improvement drivers
-
 # LAPD Crime Data — SQL Practice Project
 
 ## Overview
-A self project analyzing LAPD crime data (2020-2024, ~1M records) to practice 
-SQL fundamentals: filtering, sorting, aggregation, and grouping. Built while completing 
-the Google Data Analytics Professional Certificate, using SQLite (DB Browser for SQLite) 
-to query a public dataset.
+A self project analyzing LAPD crime data (2020-2024, ~1M records) to practice SQL fundamentals. Built with SQLite (DB Browser for SQLite) to query a public dataset. Currently I am a completing the Coursera Google Data Analytics Professional Certificate, and will return to improve this upon completetion. 
 
 ## Goal
-Explore crime patterns across LA's policing areas and crime types using core SQL. This is not a polished dashboard, but a demonstration of hands-on query-writing applied to a 
-real, large dataset.
+Explore crime patterns across LA's areas and crime types using SQL. This is not a polished dashboard, but a practice of SQL applied to a 
+real dataset.
 
 ## Tools
 - DB Browser for SQLite
@@ -19,21 +13,25 @@ real, large dataset.
 
 ## Key Queries & Findings
 
-**1. Crimes by area**
-Grouped total crime counts by LAPD area to identify the highest and lowest volume areas.
+**1. Vehicle theft is the single largest crime category citywide**
+"VEHICLE - STOLEN" accounts for ~11.5% of all reported crimes (2020-2024) — more than 
+any other category, and 1.5x the volume of the next-largest type (Battery - Simple 
+Assault). Found using GROUP BY + ORDER BY across ~1M records.
 
-**2. Most common crime types**
-Used `GROUP BY` + `HAVING` to isolate crime types occurring more than 10,000 times 
-across the dataset, surfacing the handful of categories that make up the bulk of 
-reported crime.
+**2. 20 crime types account for the bulk of reported crime**
+Using GROUP BY + HAVING, isolated the crime categories occurring more than 10,000 times 
+across the dataset — just 20 categories out of 100+ distinct types, showing crime volume 
+is concentrated in a relatively small set of recurring categories.
 
-**3. Data quality check**
-Checked month-by-month record counts for each year and found that while 2020-2023 
-each have consistent, evenly distributed counts across all 12 months, 2024 shows a 
-steep decline in record counts in the later months (ex: January had roughly 4x more 
-records than December).
-This points to reporting lag with crimes that occurred late in 
-2024. It is likely that they were not entered into the system at the time this dataset was exported, rather than a genuine drop in crime. As a result, 2024 was excluded from any year to year comparisons in this analysis, since it isn't a complete, comparable year. 
+**3. Central is the single highest-volume area citywide**
+Central logged the most reported crimes of any LAPD area (2020-2024), ahead of 77th 
+Street and Pacific — a useful entry point for area-level resourcing questions.
+
+**4. Data quality catch: 2024 excluded from year-over-year analysis**
+Month-by-month record counts show 2020-2023 are complete, evenly distributed years, 
+but 2024 shows a steep drop in later months (January had ~4x more records than 
+December) — a reporting-lag artifact, not an actual crime decline. Excluded 2024 
+from any trend comparisons as a result.
 
 ## What I'm still building
 Actively expanding into JOINs, subqueries, and more advanced aggregation as part of 
