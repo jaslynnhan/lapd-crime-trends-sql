@@ -41,8 +41,6 @@ SELECT DISTINCT "Crm Cd Desc"
 FROM Crime_Data_from_2020_to_2024;
 
 -- 7. Data Quality Check, Month Coverage per Year
--- Used this to confirm 2020-2023 are complete years, and to catch
--- the reporting lag in 2024
 SELECT substr("DATE OCC", 7, 4) AS crime_year, 
        MIN(substr("DATE OCC", 1, 2)) AS earliest_month,
        MAX(substr("DATE OCC", 1, 2)) AS latest_month
